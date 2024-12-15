@@ -5,6 +5,10 @@ signal hit
 #@export var projectile_scene: PackedScene
 #@export var projectile2_scene: PackedScene
 
+# what if he's like a lil duck
+# and he gets lil hats that can do cool stuff
+# OR a hermit crab
+
 const SPEED = 350.0
 const ACCEL = 2000.0
 const FRICTION = 700.0

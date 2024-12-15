@@ -10,9 +10,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_k06y5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 109, -2, 0, 0, 0, 0, 640, 0.658596, 0, 0, 0, 0, 640, 0.658596, 0, 0, 0, 0, 1920, -2, 0, 0, 0, 0, 1920, 400, 0, 0, 0, 0, 1920, 1096, 0, 0, 0, 0, 970.667, 1096, 0, 0, 0, 0, 960, 1096, 0, 0, 0, 0, 0, 1096, 0, 0, 0, 0, 0, 0)
 }
-point_count = 5
+point_count = 11
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_26x7o"]
 
@@ -32,12 +32,15 @@ wait_time = 2.0
 one_shot = true
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(250, 400)
+position = Vector2(720, 405)
 
 [node name="MobPath" type="Path2D" parent="."]
+position = Vector2(0, 1.47177)
+scale = Vector2(0.75, 0.735883)
 curve = SubResource("Curve2D_k06y5")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+rotation = -0.0183466
 
 [node name="HUD" parent="." instance=ExtResource("4_k2am7")]
 
