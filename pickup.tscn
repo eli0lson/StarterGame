@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dam5fp7qa7qjs"]
+
+[ext_resource type="Script" path="res://pickup.gd" id="1_hobxu"]
+[ext_resource type="Texture2D" uid="uid://cvd5lqncq12at" path="res://art/antenna.png" id="1_nhjw5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dbsj5"]
+radius = 25.0
+height = 56.0
+
+[node name="Pickup" type="Area2D"]
+script = ExtResource("1_hobxu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_nhjw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_dbsj5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

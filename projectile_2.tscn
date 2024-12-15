@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://5qwkybn13p74"]
+
+[ext_resource type="Script" path="res://projectile_2.gd" id="1_jpfub"]
+[ext_resource type="SpriteFrames" uid="uid://ch677oofismxv" path="res://oldPlayer/player.tres" id="2_q3u5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_klkfh"]
+
+[node name="Projectile2" type="CharacterBody2D"]
+collision_layer = 8
+collision_priority = 2.0
+motion_mode = 1
+script = ExtResource("1_jpfub")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_klkfh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("2_q3u5u")
+animation = &"up"
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
