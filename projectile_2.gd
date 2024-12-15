@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
-
 const SPEED = 500.0
 
 var shot_vector = Vector2.ZERO
 
 func _ready():
+	print(Stats.stats)
+	if "projectile_image" in Stats.stats:
+		$AnimatedSprite2D.animation = Stats.stats["projectile_image"]
 	shot_vector = Vector2.ZERO
 	
 func _physics_process(delta: float) -> void:
@@ -34,3 +36,6 @@ func despawn():
 	$AnimatedSprite2D.stop()
 	hide()
 	queue_free()
+
+func set_sprite(path):
+	$AnimatedSprite2D.animation = path

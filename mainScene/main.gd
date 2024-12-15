@@ -3,6 +3,7 @@ extends Node
 var screen_size
 @export var mob_scene: PackedScene
 @export var projectile2_scene: PackedScene
+@export var item_scene: PackedScene
 var score
 
 var can_shoot = true
@@ -27,6 +28,7 @@ func _process(delta: float) -> void:
 
 func handle_fire(input, delta):
 	var projectile = projectile2_scene.instantiate()
+	#projectile.set_sprite(Stats.projectile_image)
 	
 	# animation is facing wrong way so flip to begin with
 	var projectile_rotation = PI
@@ -101,6 +103,14 @@ func _on_start_timer_timeout() -> void:
 	#$ScoreTimer.start()
 	$MobTimer.start()
 	game_is_over = false
+	$ItemTimer.start()
 
 func _on_shot_timer_timeout():
 	can_shoot = true
+
+
+func _on_item_timer_timeout() -> void:
+	var item = item_scene.instantiate()
+	add_child(item)
+	
+	

@@ -1,0 +1,18 @@
+[
+	{
+		"id": 0,
+		"name": "cake",
+		"modifier": {
+			"projectile_image": "cake"
+		},
+		"sprite_path": "res://art/projectile.png"
+	},
+	{
+		"id": 1,
+		"name": "weird_guy",
+		"modifier": {
+			"projectile_image": "weird_guy"
+		},
+		"sprite_path": "res://art/pickup-1.png"
+	}
+]

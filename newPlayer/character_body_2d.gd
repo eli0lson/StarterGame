@@ -83,6 +83,7 @@ func start(position: Vector2):
 	$CollisionShape2D.disabled = false
 
 func ouch():
+	#pass
 	hide()
 	print("HIT")
 	hit.emit()

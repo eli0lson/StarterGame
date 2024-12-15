@@ -1,12 +1,22 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://ch677oofismxv"]
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://ch677oofismxv"]
 
+[ext_resource type="Texture2D" uid="uid://f8j5j8tiq2to" path="res://art/projectile.png" id="1_4x0c5"]
 [ext_resource type="Texture2D" uid="uid://ds75tbswa1lt4" path="res://art/playerGrey_up1.png" id="1_mfqcm"]
 [ext_resource type="Texture2D" uid="uid://ba0oi3s38l6qy" path="res://art/playerGrey_up2.png" id="2_gtr6k"]
 [ext_resource type="Texture2D" uid="uid://cons64vqo31i" path="res://art/playerGrey_walk1.png" id="3_ja8xb"]
 [ext_resource type="Texture2D" uid="uid://rxefxetkc02h" path="res://art/playerGrey_walk2.png" id="4_71scx"]
+[ext_resource type="Texture2D" uid="uid://d20c13yceokaq" path="res://art/pickup-1.png" id="6_1tgib"]
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4x0c5")
+}],
+"loop": true,
+"name": &"cake",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_mfqcm")
@@ -27,5 +37,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1tgib")
+}],
+"loop": true,
+"name": &"weird_guy",
 "speed": 5.0
 }]
