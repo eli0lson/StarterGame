@@ -14,5 +14,4 @@ func _process(delta: float) -> void:
 	
 func update_stat(modifier):
 	for key in modifier:
-		print(key)
 		stats[key] = modifier[key]

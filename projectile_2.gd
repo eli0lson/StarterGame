@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 500.0
+var DMG = 5
 
 var shot_vector = Vector2.ZERO
 
@@ -8,12 +9,14 @@ func _ready():
 	print(Stats.stats)
 	if "projectile_image" in Stats.stats:
 		$AnimatedSprite2D.animation = Stats.stats["projectile_image"]
+	if "damage" in Stats.stats:
+		DMG = Stats.stats["damage"]
 	shot_vector = Vector2.ZERO
 	
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(shot_vector * delta)
 	if collision:
-		collision.get_collider().ouch()
+		collision.get_collider().ouch(DMG)
 		despawn()
 		
 		

@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://ch677oofismxv"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://ch677oofismxv"]
 
 [ext_resource type="Texture2D" uid="uid://f8j5j8tiq2to" path="res://art/projectile.png" id="1_4x0c5"]
+[ext_resource type="Texture2D" uid="uid://cvd5lqncq12at" path="res://art/antenna.png" id="1_6wx17"]
 [ext_resource type="Texture2D" uid="uid://ds75tbswa1lt4" path="res://art/playerGrey_up1.png" id="1_mfqcm"]
 [ext_resource type="Texture2D" uid="uid://ba0oi3s38l6qy" path="res://art/playerGrey_up2.png" id="2_gtr6k"]
 [ext_resource type="Texture2D" uid="uid://cons64vqo31i" path="res://art/playerGrey_walk1.png" id="3_ja8xb"]
@@ -9,6 +10,14 @@
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6wx17")
+}],
+"loop": true,
+"name": &"antenna",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_4x0c5")

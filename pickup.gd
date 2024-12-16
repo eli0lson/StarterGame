@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var id = 0
+@export var id: int = 0
 var modifiers
 
 # Called when the node enters the scene tree for the first time.
@@ -9,11 +9,11 @@ func _ready() -> void:
 	#print(file_as_text)
 	var json = JSON.new()
 	var parse_return = json.parse(file_as_text)
-	
+	print(parse_return)
 	modifiers = json.data
 	
 	id = randi_range(0, modifiers.size() - 1)
-	print(modifiers[id]["sprite_path"])
+	print("eli", modifiers)
 	$Sprite2D.texture = load(modifiers[id]["sprite_path"])
 	
 	var vp = get_viewport().size

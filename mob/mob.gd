@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 signal score
+var health = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,11 +21,10 @@ func game_over():
 	hide()
 
 
-func ouch():
-	hide()
-	Score.set_score(Score.score + 1)
-	$CollisionShape2D.set_deferred("disabled", true)
-
-
-func _on_body_entered(body: Node) -> void:
-	ouch()
+func ouch(damage_amount):
+	print("hey")
+	health -= damage_amount
+	if health <= 0:
+		hide()
+		Score.set_score(Score.score + 1)
+		$CollisionShape2D.set_deferred("disabled", true)

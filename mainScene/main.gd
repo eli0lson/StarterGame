@@ -106,6 +106,9 @@ func _on_start_timer_timeout() -> void:
 	$ItemTimer.start()
 
 func _on_shot_timer_timeout():
+	if "fire_rate" in Stats.stats:
+		if Stats.stats["fire_rate"] != $ShotTimer.wait_time:
+			$ShotTimer.wait_time = Stats.stats["fire_rate"]
 	can_shoot = true
 
 

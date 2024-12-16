@@ -3,7 +3,9 @@
 		"id": 0,
 		"name": "cake",
 		"modifier": {
-			"projectile_image": "cake"
+			"projectile_image": "cake",
+			"damage": 10,
+			"fire_rate": 0.33
 		},
 		"sprite_path": "res://art/projectile.png"
 	},
@@ -11,8 +13,20 @@
 		"id": 1,
 		"name": "weird_guy",
 		"modifier": {
-			"projectile_image": "weird_guy"
+			"projectile_image": "weird_guy",
+			"damage": 5,
+			"fire_rate": 0.7
 		},
 		"sprite_path": "res://art/pickup-1.png"
+	},
+	{
+		"id": 2,
+		"name": "antenna",
+		"modifier": {
+			"projectile_image": "antenna",
+			"damage": 10,
+			"fire_rate": 0.7
+		},
+		"sprite_path": "res://art/antenna.png"
 	}
 ]
