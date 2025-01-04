@@ -4,8 +4,8 @@
 		"name": "cake",
 		"modifier": {
 			"projectile_image": "cake",
-			"damage": 10,
-			"fire_rate": 0.33
+			"damage": 5,
+			"fire_rate": 0.1
 		},
 		"sprite_path": "res://art/projectile.png"
 	},

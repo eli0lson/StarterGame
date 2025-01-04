@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://00ago5m33nym"]
+[gd_scene load_steps=11 format=3 uid="uid://00ago5m33nym"]
 
 [ext_resource type="Script" path="res://mainScene/main.gd" id="1_g404o"]
 [ext_resource type="PackedScene" uid="uid://bv3smscm5bpsa" path="res://mob/mob.tscn" id="2_dlbg0"]
-[ext_resource type="PackedScene" uid="uid://5qwkybn13p74" path="res://projectile_2.tscn" id="3_bux4m"]
+[ext_resource type="PackedScene" uid="uid://5qwkybn13p74" path="res://projectile/projectile_2.tscn" id="3_bux4m"]
 [ext_resource type="PackedScene" uid="uid://i4tgixgnogga" path="res://hud/hud.tscn" id="4_k2am7"]
-[ext_resource type="PackedScene" uid="uid://dam5fp7qa7qjs" path="res://pickup.tscn" id="4_pv7v5"]
+[ext_resource type="PackedScene" uid="uid://dam5fp7qa7qjs" path="res://pickups/pickup.tscn" id="4_pv7v5"]
 [ext_resource type="PackedScene" uid="uid://beagqcu70fdyw" path="res://newPlayer/character_body_2d.tscn" id="5_j2m48"]
 [ext_resource type="PackedScene" uid="uid://ckcbv6nyn23cj" path="res://mainScene/static_body_2d.tscn" id="5_ywqbw"]
+[ext_resource type="AudioStream" uid="uid://bks2eoe3u84c3" path="res://art/gameover.wav" id="8_gggmv"]
 
 [sub_resource type="Curve2D" id="Curve2D_k06y5"]
 _data = {
@@ -20,7 +21,15 @@ point_count = 11
 script = ExtResource("1_g404o")
 mob_scene = ExtResource("2_dlbg0")
 projectile2_scene = ExtResource("3_bux4m")
-item_scene = ExtResource("4_pv7v5")
+pickup_scene = ExtResource("4_pv7v5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.612777, 0.544698, 1, 1)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -60,8 +69,11 @@ texture = SubResource("ViewportTexture_26x7o")
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 0.33
 
-[node name="ItemTimer" type="Timer" parent="."]
+[node name="PickupTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_gggmv")
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
@@ -69,4 +81,4 @@ wait_time = 5.0
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="hit" from="PhysicsPlayer" to="." method="game_over"]
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
-[connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]
+[connection signal="timeout" from="PickupTimer" to="." method="_on_item_timer_timeout"]

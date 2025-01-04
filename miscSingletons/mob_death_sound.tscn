@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://i6fscky8r85g"]
+
+[ext_resource type="AudioStream" uid="uid://bd57fmvow5j0y" path="res://art/squishyShot.mp3" id="1_4b0b5"]
+
+[node name="MobDeathSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_4b0b5")
+max_polyphony = 5

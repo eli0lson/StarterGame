@@ -3,7 +3,7 @@ extends Node
 var screen_size
 @export var mob_scene: PackedScene
 @export var projectile2_scene: PackedScene
-@export var item_scene: PackedScene
+@export var pickup_scene: PackedScene
 var score
 
 var can_shoot = true
@@ -57,6 +57,13 @@ func game_over():
 	$MobTimer.stop()
 	$HUD.show_game_over()
 	$Mob.game_over()
+	$PickupTimer.stop()
+	
+	$DeathSound.play()
+	
+	get_tree().call_group("mobs", "queue_free")
+	get_tree().call_group("pickups", "queue_free")
+	
 	game_is_over = true
 
 func new_game():
@@ -103,7 +110,7 @@ func _on_start_timer_timeout() -> void:
 	#$ScoreTimer.start()
 	$MobTimer.start()
 	game_is_over = false
-	$ItemTimer.start()
+	$PickupTimer.start()
 
 func _on_shot_timer_timeout():
 	if "fire_rate" in Stats.stats:
@@ -113,7 +120,8 @@ func _on_shot_timer_timeout():
 
 
 func _on_item_timer_timeout() -> void:
-	var item = item_scene.instantiate()
-	add_child(item)
+	print('wtf')
+	var pickup = pickup_scene.instantiate()
+	add_child(pickup)
 	
 	

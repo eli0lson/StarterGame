@@ -89,7 +89,6 @@ func start(position: Vector2):
 func ouch():
 	#pass
 	hide()
-	print("HIT")
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
 	
