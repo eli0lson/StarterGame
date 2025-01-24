@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+@export var direction = 0
 signal score
 var health = 20
 
@@ -14,10 +15,11 @@ const shot_sounds = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names()
-	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
+	$AnimatedSprite2D.flip_h = linear_velocity.x > 0
+	$AnimatedSprite2D.play("frog")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 

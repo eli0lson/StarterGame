@@ -1,0 +1,106 @@
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://dl72vjn31804k"]
+
+[ext_resource type="Texture2D" uid="uid://dps00qs75xd4p" path="res://art/enemyFlyingAlt_1.png" id="1_0wq82"]
+[ext_resource type="Texture2D" uid="uid://dxy3yu0rmd5gw" path="res://art/enemyFlyingAlt_2.png" id="2_iscp7"]
+[ext_resource type="Texture2D" uid="uid://cfa0vuhf5cmc2" path="res://art/frog/frogguy1.png" id="3_jfuwe"]
+[ext_resource type="Texture2D" uid="uid://dltwfbjjv4dc2" path="res://art/enemySwimming_1.png" id="4_awdeg"]
+[ext_resource type="Texture2D" uid="uid://ccyaol3ovagvm" path="res://art/enemySwimming_2.png" id="5_r1f7p"]
+[ext_resource type="Texture2D" uid="uid://ckwo4ua4ygnxh" path="res://art/enemyWalking_1.png" id="6_mwajd"]
+[ext_resource type="Texture2D" uid="uid://bc5pxxokcvy76" path="res://art/enemyWalking_2.png" id="7_5utkd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw2ih"]
+atlas = ExtResource("3_jfuwe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrd42"]
+atlas = ExtResource("3_jfuwe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwu0u"]
+atlas = ExtResource("3_jfuwe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1uai"]
+atlas = ExtResource("3_jfuwe")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31oj5"]
+atlas = ExtResource("3_jfuwe")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0n0k"]
+atlas = ExtResource("3_jfuwe")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8spe"]
+atlas = ExtResource("3_jfuwe")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg17n"]
+atlas = ExtResource("3_jfuwe")
+region = Rect2(224, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0wq82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iscp7")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw2ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrd42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwu0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1uai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31oj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0n0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8spe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg17n")
+}],
+"loop": true,
+"name": &"frog",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_awdeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r1f7p")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mwajd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5utkd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]

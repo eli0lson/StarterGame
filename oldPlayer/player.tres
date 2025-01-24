@@ -1,12 +1,45 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://ch677oofismxv"]
+[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://ch677oofismxv"]
 
 [ext_resource type="Texture2D" uid="uid://f8j5j8tiq2to" path="res://art/projectile.png" id="1_4x0c5"]
 [ext_resource type="Texture2D" uid="uid://cvd5lqncq12at" path="res://art/antenna.png" id="1_6wx17"]
 [ext_resource type="Texture2D" uid="uid://ds75tbswa1lt4" path="res://art/playerGrey_up1.png" id="1_mfqcm"]
+[ext_resource type="Texture2D" uid="uid://pfg1dt023m6i" path="res://art/astronaut/lilguy2bigbounce.png" id="2_2o0nn"]
 [ext_resource type="Texture2D" uid="uid://ba0oi3s38l6qy" path="res://art/playerGrey_up2.png" id="2_gtr6k"]
 [ext_resource type="Texture2D" uid="uid://cons64vqo31i" path="res://art/playerGrey_walk1.png" id="3_ja8xb"]
 [ext_resource type="Texture2D" uid="uid://rxefxetkc02h" path="res://art/playerGrey_walk2.png" id="4_71scx"]
 [ext_resource type="Texture2D" uid="uid://d20c13yceokaq" path="res://art/pickup-1.png" id="6_1tgib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e352c"]
+atlas = ExtResource("2_2o0nn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrnob"]
+atlas = ExtResource("2_2o0nn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4nox"]
+atlas = ExtResource("2_2o0nn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ipke"]
+atlas = ExtResource("2_2o0nn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk81w"]
+atlas = ExtResource("2_2o0nn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv07m"]
+atlas = ExtResource("2_2o0nn")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsxei"]
+atlas = ExtResource("2_2o0nn")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7wtj"]
+atlas = ExtResource("2_2o0nn")
+region = Rect2(224, 0, 32, 32)
 
 [resource]
 animations = [{
@@ -17,6 +50,35 @@ animations = [{
 "loop": true,
 "name": &"antenna",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e352c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrnob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4nox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ipke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk81w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv07m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsxei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7wtj")
+}],
+"loop": true,
+"name": &"astronaut",
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,

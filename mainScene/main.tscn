@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://00ago5m33nym"]
+[gd_scene load_steps=15 format=4 uid="uid://00ago5m33nym"]
 
 [ext_resource type="Script" path="res://mainScene/main.gd" id="1_g404o"]
 [ext_resource type="PackedScene" uid="uid://bv3smscm5bpsa" path="res://mob/mob.tscn" id="2_dlbg0"]
-[ext_resource type="PackedScene" uid="uid://5qwkybn13p74" path="res://projectile/projectile_2.tscn" id="3_bux4m"]
+[ext_resource type="PackedScene" uid="uid://5qwkybn13p74" path="res://projectile_2.tscn" id="3_bux4m"]
 [ext_resource type="PackedScene" uid="uid://i4tgixgnogga" path="res://hud/hud.tscn" id="4_k2am7"]
-[ext_resource type="PackedScene" uid="uid://dam5fp7qa7qjs" path="res://pickups/pickup.tscn" id="4_pv7v5"]
+[ext_resource type="PackedScene" uid="uid://dam5fp7qa7qjs" path="res://pickup.tscn" id="4_pv7v5"]
 [ext_resource type="PackedScene" uid="uid://beagqcu70fdyw" path="res://newPlayer/character_body_2d.tscn" id="5_j2m48"]
 [ext_resource type="PackedScene" uid="uid://ckcbv6nyn23cj" path="res://mainScene/static_body_2d.tscn" id="5_ywqbw"]
 [ext_resource type="AudioStream" uid="uid://bks2eoe3u84c3" path="res://art/gameover.wav" id="8_gggmv"]
+[ext_resource type="Texture2D" uid="uid://bigewdsdri32p" path="res://art/ice.png" id="9_q0ffk"]
 
 [sub_resource type="Curve2D" id="Curve2D_k06y5"]
 _data = {
@@ -16,6 +17,34 @@ _data = {
 point_count = 11
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_26x7o"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eoqqh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6vof"]
+texture = ExtResource("9_q0ffk")
+texture_region_size = Vector2i(32, 32)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.9818, -15.1144, 15.0702, -15.1144, 15.0702, 15.026, -14.9818, 15.1144)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -15.0702, 16, -14.9818, 16, 15.0702, -16, 14.9818)
+
+[sub_resource type="TileSet" id="TileSet_7flge"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 255
+physics_layer_0/collision_mask = 255
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_eoqqh")
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Ice"
+terrain_set_0/terrain_0/color = Color(0.456752, 0.718952, 1, 1)
+sources/0 = SubResource("TileSetAtlasSource_s6vof")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_g404o")
@@ -54,6 +83,7 @@ rotation = -0.0183466
 [node name="HUD" parent="." instance=ExtResource("4_k2am7")]
 
 [node name="PhysicsPlayer" parent="." instance=ExtResource("5_j2m48")]
+position = Vector2(720, 400)
 
 [node name="Ceiling" parent="." instance=ExtResource("5_ywqbw")]
 
@@ -74,6 +104,11 @@ wait_time = 5.0
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_gggmv")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAGAAIAAAABAAEAAAAHAAIAAAABAAEAAAAIAAIAAAABAAEAAAADAAMAAAAAAAEAAAACAAUAAAAAAAEAAAALAAMAAAAAAAEAAAAMAAUAAAAAAAEAAAAGAAYAAAABAAEAAAAHAAYAAAABAAEAAAAIAAYAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_7flge")
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

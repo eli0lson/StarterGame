@@ -22,11 +22,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_area_entered(area: Area2D) -> void:
-	hide()
-	queue_free()
-	$CollisionShape2D.set_deferred("disabled", true)
-	Stats.update_stat(id)
+#func _on_area_entered(area: Area2D) -> void:
+	#hide()
+	#queue_free()
+	#$CollisionShape2D.set_deferred("disabled", true)
+	#Stats.update_stat(id)
 #
 #func set_sprite(path) -> void:
 	#$Sprite2D.texture = load(path)

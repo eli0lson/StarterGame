@@ -1,12 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://bv3smscm5bpsa"]
+[gd_scene load_steps=19 format=3 uid="uid://bv3smscm5bpsa"]
 
 [ext_resource type="Script" path="res://mob/mob.gd" id="1_fp6us"]
 [ext_resource type="Texture2D" uid="uid://dps00qs75xd4p" path="res://art/enemyFlyingAlt_1.png" id="1_u2lls"]
 [ext_resource type="Texture2D" uid="uid://dxy3yu0rmd5gw" path="res://art/enemyFlyingAlt_2.png" id="2_ovt76"]
 [ext_resource type="Texture2D" uid="uid://dltwfbjjv4dc2" path="res://art/enemySwimming_1.png" id="3_k1m5r"]
 [ext_resource type="Texture2D" uid="uid://ccyaol3ovagvm" path="res://art/enemySwimming_2.png" id="4_gask3"]
+[ext_resource type="Texture2D" uid="uid://cfa0vuhf5cmc2" path="res://art/frog/frogguy1.png" id="4_pcvgb"]
 [ext_resource type="Texture2D" uid="uid://ckwo4ua4ygnxh" path="res://art/enemyWalking_1.png" id="5_wdt1u"]
 [ext_resource type="Texture2D" uid="uid://bc5pxxokcvy76" path="res://art/enemyWalking_2.png" id="6_sf8hn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw2ih"]
+atlas = ExtResource("4_pcvgb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrd42"]
+atlas = ExtResource("4_pcvgb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwu0u"]
+atlas = ExtResource("4_pcvgb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1uai"]
+atlas = ExtResource("4_pcvgb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31oj5"]
+atlas = ExtResource("4_pcvgb")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0n0k"]
+atlas = ExtResource("4_pcvgb")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8spe"]
+atlas = ExtResource("4_pcvgb")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg17n"]
+atlas = ExtResource("4_pcvgb")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wj1i7"]
 animations = [{
@@ -20,6 +53,35 @@ animations = [{
 "loop": true,
 "name": &"fly",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw2ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrd42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwu0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1uai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31oj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0n0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8spe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg17n")
+}],
+"loop": true,
+"name": &"frog",
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -45,24 +107,22 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4y7dc"]
-radius = 36.0
-height = 96.0
+radius = 22.0
+height = 74.0
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_layer = 13
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_fp6us")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_wj1i7")
-animation = &"walk"
-frame_progress = 0.0598505
+animation = &"frog"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = -1.5708
+position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_4y7dc")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

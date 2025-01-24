@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 500.0
+const SPEED = 600.0
 var DMG = 5
 
 var shot_vector = Vector2.ZERO
@@ -16,7 +16,10 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(shot_vector * delta)
 	if collision:
-		collision.get_collider().ouch(DMG)
+		#var collider = collision.get_collider().get_class()
+		#print(collider.class_name())
+		if collision.get_collider().has_method("ouch"):
+			collision.get_collider().ouch(DMG)
 		despawn()
 		
 		

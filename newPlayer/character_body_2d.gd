@@ -9,9 +9,9 @@ signal hit
 # and he gets lil hats that can do cool stuff
 # OR a hermit crab
 
-const SPEED = 350.0
+const SPEED = 250.0
 const ACCEL = 2000.0
-const FRICTION = 700.0
+const FRICTION = 800.0
 
 var screen_size
 
@@ -19,18 +19,18 @@ func handle_movement(input: Vector2, delta):
 	if input:
 		velocity = velocity.move_toward(input * SPEED, delta * ACCEL)
 		if input.x != 0:
-			$AnimatedSprite2D.flip_v = false
-			rotation = -PI / 4 if input.x < 0 else PI / 4
+			$AnimatedSprite2D.flip_h = input.x < 0
+			#rotation = -PI / 4 if input.x < 0 else PI / 4
 			
 		#$CollisionShape2D.rotation = rotation
 		
-		if input.y != 0:
-			rotation = 0
-			$AnimatedSprite2D.flip_v = input.y > 0
+		#if input.y != 0:
+			#rotation = 0
+			#$AnimatedSprite2D.flip_v = input.y > 0
 		#$CollisionShape2D.flip_v = input.y > 0
 		
-		$AnimatedSprite2D.rotation = rotation
-		$CollisionShape2D.rotation = rotation
+		#$AnimatedSprite2D.rotation = rotation
+		#$CollisionShape2D.rotation = rotation
 		
 		$AnimatedSprite2D.play()
 		
