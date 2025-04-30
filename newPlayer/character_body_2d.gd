@@ -23,19 +23,22 @@ var cur_accessories = {}
 
 func handle_movement(input: Vector2, firing_input: Vector2, delta):
 	if input != Vector2.ZERO or firing_input != Vector2.ZERO:
+		var animation_input = input
 		velocity = velocity.move_toward(input * SPEED, delta * ACCEL)
 		if input == Vector2.ZERO:
 			$body.stop()
 		else:
 			$body.play()
 		if firing_input != Vector2.ZERO:
-			input = firing_input
+			animation_input = firing_input
 		
 		var new_direction = direction
-		if input.y != 0:
-			new_direction = " down" if input.y > 0 else " up"
+		if animation_input.y != 0:
+			new_direction = " down" if animation_input.y > 0 else " up"
+			$body.speed_scale = -1 if animation_input.y != input.y else 1
 		else:
-			new_direction = " right" if input.x > 0 else " left"
+			new_direction = " right" if animation_input.x > 0 else " left"
+			$body.speed_scale = -1 if animation_input.x != input.x else 1
 		
 		if new_direction != direction or velocity != movement_vector or cur_accessories != Stats.stats["accessories"]:
 			direction = new_direction
@@ -136,7 +139,7 @@ func update_outfit():
 		var sprite = get_node(accessory)
 		if cur_accessories[accessory] == "none":
 			new_direction = ""
-		print(sprite.animation)
+			
 		sprite.animation = cur_accessories[accessory] + new_direction
 		#$Weapon.animation = accessories["weapon"] + direction
 		#$Hat.animation = accessories["hat"] + direction

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0pk5vyw0p4fr"
-path="res://.godot/imported/cowboy hat.png-3b61de12fc487b070e8c71eacfbe7ca4.ctex"
+uid="uid://xj3pip3nyyl"
+path="res://.godot/imported/cowboy-coat.png-20cfa69c407e5bbcf0927a9cfd034120.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cowboy hat.png"
-dest_files=["res://.godot/imported/cowboy hat.png-3b61de12fc487b070e8c71eacfbe7ca4.ctex"]
+source_file="res://art/cowboy-coat.png"
+dest_files=["res://.godot/imported/cowboy-coat.png-20cfa69c407e5bbcf0927a9cfd034120.ctex"]
 
 [params]
 

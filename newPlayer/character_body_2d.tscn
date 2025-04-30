@@ -12,13 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://d20c13yceokaq" path="res://art/pickup-1.png" id="9_o8gab"]
 [ext_resource type="Texture2D" uid="uid://b3prhksey7tdf" path="res://art/hat left.png" id="11_v0i0b"]
 [ext_resource type="Texture2D" uid="uid://bq6n4lv4w7h2p" path="res://art/hat right.png" id="12_5fgvp"]
-[ext_resource type="Texture2D" uid="uid://b0pk5vyw0p4fr" path="res://art/cowboy hat.png" id="12_rwe8y"]
+[ext_resource type="Texture2D" uid="uid://b0pk5vyw0p4fr" path="res://art/cowboy-hat.png" id="12_rwe8y"]
 [ext_resource type="Texture2D" uid="uid://dnt4wkdt7pk2x" path="res://art/laser.png" id="12_ug8qo"]
 [ext_resource type="Texture2D" uid="uid://b8ply8f1ruh5g" path="res://art/hat up.png" id="13_rajcp"]
 [ext_resource type="Texture2D" uid="uid://d2yomd1up5v3t" path="res://art/pistol.png" id="14_yo2yj"]
 [ext_resource type="Texture2D" uid="uid://dchi0a48yrgt2" path="res://art/skull.png" id="15_2xb4u"]
 [ext_resource type="Texture2D" uid="uid://bp2s5tilws444" path="res://art/cowboy clothes.png" id="17_cbxcg"]
-[ext_resource type="Texture2D" uid="uid://xj3pip3nyyl" path="res://art/cowboy coat.png" id="18_l8f37"]
+[ext_resource type="Texture2D" uid="uid://xj3pip3nyyl" path="res://art/cowboy-coat.png" id="18_l8f37"]
 [ext_resource type="Texture2D" uid="uid://y2mrknn5c3gy" path="res://art/laser left.png" id="19_jwbl3"]
 [ext_resource type="Texture2D" uid="uid://dmk8o3oke5w80" path="res://art/mom spaghetti.png" id="19_kf0il"]
 [ext_resource type="Texture2D" uid="uid://b4aaantdmleuc" path="res://art/laser right.png" id="19_ra2jv"]
@@ -360,8 +360,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41abw"]
-radius = 25.0
-height = 116.0
+radius = 29.0
+height = 142.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5hveu"]
 animations = [{
@@ -1032,11 +1032,11 @@ script = ExtResource("1_c43v6")
 [node name="body" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_2cbxs")
-animation = &"naked cowboy right"
+animation = &"naked cowboy down"
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(-1, 10)
 shape = SubResource("CapsuleShape2D_41abw")
 metadata/_edit_group_ = true
 

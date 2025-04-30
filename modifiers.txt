@@ -13,7 +13,7 @@
 				"face": "mustache"
 			}
 		},
-		"sprite_path": "res://art/projectile.png"
+		"sprite_path": "res://art/cowboy-hat.png"
 	},
 	{
 		"id": 1,
@@ -29,7 +29,7 @@
 				"face": "mustache"
 			}
 		},
-		"sprite_path": "res://art/pickup-1.png"
+		"sprite_path": "res://art/cowboy-coat.png"
 	},
 	{
 		"id": 2,
@@ -45,6 +45,6 @@
 				"face": "none"
 			}
 		},
-		"sprite_path": "res://art/antenna.png"
+		"sprite_path": "res://art/mom spaghetti.png"
 	}
 ]

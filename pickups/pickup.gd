@@ -15,8 +15,9 @@ func _ready() -> void:
 	$Sprite2D.texture = load(modifiers[id]["sprite_path"])
 	
 	var vp = get_viewport().size
-	position = Vector2(randf_range(20, vp.x - 20), randf_range(20, vp.y - 20))
+	position = Vector2(randf_range(40, 1440 - 40), randf_range(40, 810 - 40))
 	
+	print(position, " ", vp)
 	show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
