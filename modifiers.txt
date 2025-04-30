@@ -3,9 +3,15 @@
 		"id": 0,
 		"name": "cake",
 		"modifier": {
-			"projectile_image": "cake",
-			"damage": 5,
-			"fire_rate": 0.1
+			"projectile_image": "laser",
+			"damage": 10,
+			"fire_rate": 0.1,
+			"accessories": {
+				"clothes": "cowboy clothes",
+				"hat": "cowboy hat",
+				"weapon": "laser",
+				"face": "mustache"
+			}
 		},
 		"sprite_path": "res://art/projectile.png"
 	},
@@ -13,9 +19,15 @@
 		"id": 1,
 		"name": "weird_guy",
 		"modifier": {
-			"projectile_image": "weird_guy",
-			"damage": 5,
-			"fire_rate": 0.7
+			"projectile_image": "laser",
+			"damage": 10,
+			"fire_rate": 0.7,
+			"accessories": {
+				"clothes": "cowboy coat",
+				"hat": "cowboy hat",
+				"weapon": "laser",
+				"face": "mustache"
+			}
 		},
 		"sprite_path": "res://art/pickup-1.png"
 	},
@@ -23,9 +35,15 @@
 		"id": 2,
 		"name": "antenna",
 		"modifier": {
-			"projectile_image": "antenna",
+			"projectile_image": "laser",
 			"damage": 10,
-			"fire_rate": 0.7
+			"fire_rate": 0.7,
+			"accessories": {
+				"clothes": "mom spaghetti",
+				"hat": "none",
+				"weapon": "laser",
+				"face": "none"
+			}
 		},
 		"sprite_path": "res://art/antenna.png"
 	}

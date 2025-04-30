@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://00ago5m33nym"]
+[gd_scene load_steps=16 format=4 uid="uid://00ago5m33nym"]
 
 [ext_resource type="Script" path="res://mainScene/main.gd" id="1_g404o"]
 [ext_resource type="PackedScene" uid="uid://bv3smscm5bpsa" path="res://mob/mob.tscn" id="2_dlbg0"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ckcbv6nyn23cj" path="res://mainScene/static_body_2d.tscn" id="5_ywqbw"]
 [ext_resource type="AudioStream" uid="uid://bks2eoe3u84c3" path="res://art/gameover.wav" id="8_gggmv"]
 [ext_resource type="Texture2D" uid="uid://bigewdsdri32p" path="res://art/ice.png" id="9_q0ffk"]
+[ext_resource type="Script" path="res://miscSingletons/stats.gd" id="10_0pyac"]
 
 [sub_resource type="Curve2D" id="Curve2D_k06y5"]
 _data = {
@@ -97,7 +98,7 @@ position = Vector2(720, 400)
 texture = SubResource("ViewportTexture_26x7o")
 
 [node name="ShotTimer" type="Timer" parent="."]
-wait_time = 0.33
+wait_time = 0.355
 
 [node name="PickupTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -109,6 +110,9 @@ stream = ExtResource("8_gggmv")
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAGAAIAAAABAAEAAAAHAAIAAAABAAEAAAAIAAIAAAABAAEAAAADAAMAAAAAAAEAAAACAAUAAAAAAAEAAAALAAMAAAAAAAEAAAAMAAUAAAAAAAEAAAAGAAYAAAABAAEAAAAHAAYAAAABAAEAAAAIAAYAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_7flge")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("10_0pyac")
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

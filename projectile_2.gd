@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
+signal fire_weapon
+
 const SPEED = 600.0
-var DMG = 5
+var DMG = 10
 
 var shot_vector = Vector2.ZERO
 
 func _ready():
-	print(Stats.stats)
 	if "projectile_image" in Stats.stats:
 		$AnimatedSprite2D.animation = Stats.stats["projectile_image"]
 	if "damage" in Stats.stats:
@@ -30,6 +31,9 @@ func fire(input, character_velocity, delta):
 	if input + character_velocity != Vector2.ZERO:
 		input += (character_velocity.normalized() * .2)
 	
+	#if input.y > 0:
+		#input.x = 0
+		
 	shot_vector = velocity.move_toward(input * SPEED, delta * 100000)
 	#velocity = velocity.move_toward(shot_vector, delta)
 	#print(velocity)

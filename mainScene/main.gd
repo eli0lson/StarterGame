@@ -32,14 +32,23 @@ func handle_fire(input, delta):
 	
 	# animation is facing wrong way so flip to begin with
 	var projectile_rotation = PI
-	if input.x != 0:
+	if input.y != 0:
+		projectile_rotation = -PI
+		input.x = 0
+	elif input.x != 0:
 		#projectile.flip_v = false
 		projectile_rotation = PI / 2 if input.x < 0 else -PI / 2
-		
-	if input.y > 0:
-		projectile_rotation = 0
 	
-	projectile.position = $PhysicsPlayer.position
+	
+	var source_offset = $PhysicsPlayer.position
+	
+	if input.y != 0:
+		source_offset = Vector2(45, 50) if input.y > 0 else Vector2(-35.5, -60)
+	else:
+		source_offset = Vector2(100, -10) if input.x > 0 else Vector2(-100, 2)
+		
+	
+	projectile.position = $PhysicsPlayer.position + source_offset
 	projectile.rotation = projectile_rotation
 	add_child(projectile)
 	
@@ -51,6 +60,13 @@ func handle_fire(input, delta):
 	$ShotTimer.start()
 
 func game_over():
+	Stats.stats = {
+		"accessories": {
+			"clothes": "none",
+			"hat": "none",
+			"weapon": "laser"
+		}
+	}
 	#$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
@@ -66,6 +82,14 @@ func game_over():
 
 func new_game():
 	Score.score = 0
+	Stats.stats = {
+		"accessories": {
+			"clothes": "none",
+			"hat": "none",
+			"face": "none",
+			"weapon": "laser"
+		}
+	}
 	$PhysicsPlayer.start($StartPosition.position)
 	#$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -93,7 +117,7 @@ func _on_mob_timer_timeout() -> void:
 	
 	
 	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	var velocity = Vector2(randf_range(200.0, 300.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
 	
 	# Spawn the mob by adding it to the Main scene.

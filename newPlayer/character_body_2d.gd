@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 signal hit
+signal fire
+signal outfit_change
 
 #@export var projectile_scene: PackedScene
 #@export var projectile2_scene: PackedScene
@@ -8,35 +10,59 @@ signal hit
 # what if he's like a lil duck
 # and he gets lil hats that can do cool stuff
 # OR a hermit crab
+# nope he's a cowboy
 
-const SPEED = 250.0
+const SPEED = 325.0
 const ACCEL = 2000.0
-const FRICTION = 800.0
+const FRICTION = 1000.0
 
 var screen_size
+var direction = " down"
+var movement_vector = Vector2.ZERO
+var cur_accessories = {}
 
-func handle_movement(input: Vector2, delta):
-	if input:
+func handle_movement(input: Vector2, firing_input: Vector2, delta):
+	if input != Vector2.ZERO or firing_input != Vector2.ZERO:
 		velocity = velocity.move_toward(input * SPEED, delta * ACCEL)
-		if input.x != 0:
-			$AnimatedSprite2D.flip_h = input.x < 0
+		if input == Vector2.ZERO:
+			$body.stop()
+		else:
+			$body.play()
+		if firing_input != Vector2.ZERO:
+			input = firing_input
+		
+		var new_direction = direction
+		if input.y != 0:
+			new_direction = " down" if input.y > 0 else " up"
+		else:
+			new_direction = " right" if input.x > 0 else " left"
+		
+		if new_direction != direction or velocity != movement_vector or cur_accessories != Stats.stats["accessories"]:
+			direction = new_direction
+			movement_vector = velocity
+			update_outfit()
+	
+			
 			#rotation = -PI / 4 if input.x < 0 else PI / 4
 			
 		#$CollisionShape2D.rotation = rotation
 		
 		#if input.y != 0:
 			#rotation = 0
-			#$AnimatedSprite2D.flip_v = input.y > 0
+			#$Body.flip_v = input.y > 0
 		#$CollisionShape2D.flip_v = input.y > 0
 		
-		#$AnimatedSprite2D.rotation = rotation
+		#$Body.rotation = rotation
 		#$CollisionShape2D.rotation = rotation
 		
-		$AnimatedSprite2D.play()
+		
 		
 	else:
+		direction = " down"
+		update_outfit()
+
 		velocity = velocity.move_toward(Vector2.ZERO, delta * FRICTION)
-		$AnimatedSprite2D.stop()
+		$body.stop()
 		
 	return velocity
 	#
@@ -60,8 +86,14 @@ func handle_movement(input: Vector2, delta):
 		
 func _physics_process(delta: float) -> void:
 	var input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var fire_input = Input.get_vector("shoot_left", "shoot_right", "shoot_up", "shoot_down")
 	
-	var playerVelocity = handle_movement(input, delta)
+	if fire_input:
+		$weapon.play()
+	else:
+		$weapon.stop()
+	
+	var playerVelocity = handle_movement(input, fire_input, delta)
 	#if (projectileInput && can_shoot):
 		#handle_fire(projectileInput, delta)
 	
@@ -76,6 +108,7 @@ func handle_collision(collision, go_to):
 		ouch()
 	else:
 		move_and_slide()
+		update_outfit()
 	
 
 func start(position: Vector2):
@@ -87,8 +120,24 @@ func start(position: Vector2):
 	$CollisionShape2D.disabled = false
 
 func ouch():
-	#pass
-	hide()
-	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	pass
+	#hide()
+	#hit.emit()
+	#$CollisionShape2D.set_deferred("disabled", true)
 	
+func fire_weapon():
+	$weapon.play()
+	
+func update_outfit():
+	cur_accessories = Stats.stats["accessories"]
+	$body.animation = 'naked cowboy' + direction
+	for accessory in cur_accessories:
+		var new_direction = direction
+		var sprite = get_node(accessory)
+		if cur_accessories[accessory] == "none":
+			new_direction = ""
+		print(sprite.animation)
+		sprite.animation = cur_accessories[accessory] + new_direction
+		#$Weapon.animation = accessories["weapon"] + direction
+		#$Hat.animation = accessories["hat"] + direction
+		#$Clothes.animation = accessories["clothes"] + direction

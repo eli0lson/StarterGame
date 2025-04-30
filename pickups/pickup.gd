@@ -37,7 +37,6 @@ func _on_body_entered(body: Node2D) -> void:
 	queue_free()
 	$CollisionShape2D.set_deferred("disabled", true)
 	
-	print(modifiers, modifiers[id])
 	if modifiers != null && modifiers[id] != null:
 		var modifier = modifiers[id]["modifier"]
 		

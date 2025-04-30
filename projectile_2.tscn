@@ -17,9 +17,9 @@ metadata/_edit_group_ = true
 shape = SubResource("CircleShape2D_klkfh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(4.5, 4.5)
 sprite_frames = ExtResource("2_q3u5u")
-animation = &"astronaut"
+animation = &"laser"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 

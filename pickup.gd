@@ -9,11 +9,9 @@ func _ready() -> void:
 	#print(file_as_text)
 	var json = JSON.new()
 	var parse_return = json.parse(file_as_text)
-	print(parse_return)
 	modifiers = json.data
 	
 	id = randi_range(0, modifiers.size() - 1)
-	print("eli", modifiers)
 	$Sprite2D.texture = load(modifiers[id]["sprite_path"])
 	
 	var vp = get_viewport().size
@@ -24,14 +22,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_area_entered(area: Area2D) -> void:
-	hide()
-	queue_free()
-	$CollisionShape2D.set_deferred("disabled", true)
-	Stats.update_stat(id)
-#
-#func set_sprite(path) -> void:
-	#$Sprite2D.texture = load(path)
+#func _on_area_entered(area: Area2D) -> void:
+	#hide()
+	#queue_free()
+	#$CollisionShape2D.set_deferred("disabled", true)
+	#Stats.update_stat(id)
+##
+##func set_sprite(path) -> void:
+	##$Sprite2D.texture = load(path)
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -39,7 +37,6 @@ func _on_body_entered(body: Node2D) -> void:
 	queue_free()
 	$CollisionShape2D.set_deferred("disabled", true)
 	
-	print(modifiers, modifiers[id])
 	if modifiers != null && modifiers[id] != null:
 		var modifier = modifiers[id]["modifier"]
 		
