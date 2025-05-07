@@ -18,27 +18,39 @@ const FRICTION = 1000.0
 
 var screen_size
 var direction = " down"
+var walking_direction = " down"
 var movement_vector = Vector2.ZERO
 var cur_accessories = {}
 
 func handle_movement(input: Vector2, firing_input: Vector2, delta):
 	if input != Vector2.ZERO or firing_input != Vector2.ZERO:
-		var animation_input = input
-		velocity = velocity.move_toward(input * SPEED, delta * ACCEL)
-		if input == Vector2.ZERO:
-			$body.stop()
+		if input:
+			$boots.play()
 		else:
-			$body.play()
+			$boots.pause()
+		var animation_input = input
+			
+		if input.x != 0:
+			walking_direction = " right" if input.x > 0 else " left"
+		
+		velocity = velocity.move_toward(input * SPEED, delta * ACCEL)
+		
 		if firing_input != Vector2.ZERO:
 			animation_input = firing_input
 		
 		var new_direction = direction
 		if animation_input.y != 0:
 			new_direction = " down" if animation_input.y > 0 else " up"
-			$body.speed_scale = -1 if animation_input.y != input.y else 1
+			walking_direction = walking_direction if input.x != 0 else new_direction
+			$boots.speed_scale = 1 if input.y + animation_input.y != 0 else -1
+
 		else:
 			new_direction = " right" if animation_input.x > 0 else " left"
-			$body.speed_scale = -1 if animation_input.x != input.x else 1
+			if input.x + animation_input.x == 0:
+				walking_direction = new_direction
+				$boots.speed_scale = -1
+			else:
+				$boots.speed_scale = 1
 		
 		if new_direction != direction or velocity != movement_vector or cur_accessories != Stats.stats["accessories"]:
 			direction = new_direction
@@ -62,10 +74,11 @@ func handle_movement(input: Vector2, firing_input: Vector2, delta):
 		
 	else:
 		direction = " down"
+		walking_direction = " down"
 		update_outfit()
 
 		velocity = velocity.move_toward(Vector2.ZERO, delta * FRICTION)
-		$body.stop()
+		$boots.pause()
 		
 	return velocity
 	#
@@ -134,6 +147,7 @@ func fire_weapon():
 func update_outfit():
 	cur_accessories = Stats.stats["accessories"]
 	$body.animation = 'naked cowboy' + direction
+	$boots.animation = 'boots' + walking_direction
 	for accessory in cur_accessories:
 		var new_direction = direction
 		var sprite = get_node(accessory)
